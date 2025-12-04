@@ -2,8 +2,6 @@ import os
 import subprocess
 
 
-
-# get git diff
-diff = subprocess.run(['git', 'diff', '--name-only', 'HEAD~1'], capture_output=True, text=True).stdout
-print("slop code written, heres whars changed:")
-print(diff)
+# get the diff from the last commit
+diff = subprocess.check_output(['git', 'diff', 'HEAD^', 'HEAD']).decode('utf-8')
+print("slop code written, heres whars changed:\n", diff)
